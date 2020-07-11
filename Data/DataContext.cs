@@ -1,9 +1,10 @@
 using lxwebapijwt.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace lxwebapijwt.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext
     {
         public DataContext(DbContextOptions<DataContext> options)
         :base(options)
@@ -18,11 +19,12 @@ namespace lxwebapijwt.Data
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         { 
+            base.OnConfiguring(optionsBuilder);
             //optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
-
+            base.OnModelCreating(modelBuilder);
             
         }
 

@@ -54,3 +54,16 @@
 /home/cesar/Projetos/lxwebapijwt/obj/Debug/netcoreapp3.1/lxwebapijwt.pdb
 /home/cesar/Projetos/lxwebapijwt/obj/Debug/netcoreapp3.1/lxwebapijwt.genruntimeconfig.cache
 /home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.Internal.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Core.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Stores.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/lxwebapijwt.StaticWebAssets.xml
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.UI.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.Extensions.FileProviders.Abstractions.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.Extensions.FileProviders.Embedded.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/home/cesar/Projetos/lxwebapijwt/obj/Debug/netcoreapp3.1/lxwebapijwt.MvcApplicationPartsAssemblyInfo.cs
