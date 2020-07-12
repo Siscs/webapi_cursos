@@ -1,8 +1,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using lxwebapijwt.Models;
+using lxwebapijwt.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace lxwebapijwt.Controllers
 {
@@ -13,14 +16,20 @@ namespace lxwebapijwt.Controllers
 
         private readonly SignInManager<IdentityUser> _signInmanager;
         private readonly UserManager<IdentityUser> _usermanager;
+        private readonly TokenConfig _tokenConfig;
 
-        public AuthController(SignInManager<IdentityUser> signInmanager, UserManager<IdentityUser> usermanager)
+        public AuthController(SignInManager<IdentityUser> signInmanager, 
+                              UserManager<IdentityUser> usermanager,
+                              IOptions<TokenConfig> tokenConfig)
         {
             _signInmanager = signInmanager;
             _usermanager = usermanager;
+            _tokenConfig = tokenConfig.Value;
         }
 
+
         [HttpPost("novousuario")]
+        [AllowAnonymous]
         public async Task<ActionResult> NovoUsuario(UsuarioRegistrarVM usuarioRegistrarVM)
         {
             if(!ModelState.IsValid) return BadRequest(ModelState.Values.SelectMany(p => p.Errors));
@@ -43,16 +52,21 @@ namespace lxwebapijwt.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<ActionResult> Login(UsuarioLoginVM usuarioLoginVM)
         {
             if(!ModelState.IsValid) return BadRequest(ModelState.Values.SelectMany(p => p.Errors));
 
             var result = await _signInmanager.PasswordSignInAsync(usuarioLoginVM.Email, usuarioLoginVM.Senha, false , true);
 
-            if(result.Succeeded) return Ok();
+            if(result.Succeeded) 
+            {
+                var usuario = await _usermanager.FindByEmailAsync(usuarioLoginVM.Email);
+                return Ok(TokenService.GerarToken(usuario, _tokenConfig));
+            }
+
 
             return BadRequest(new { Message = "usuario inválido"} );
-
         }
         
     }

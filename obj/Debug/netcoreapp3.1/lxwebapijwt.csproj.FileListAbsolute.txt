@@ -67,3 +67,10 @@
 /home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.Extensions.FileProviders.Embedded.dll
 /home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
 /home/cesar/Projetos/lxwebapijwt/obj/Debug/netcoreapp3.1/lxwebapijwt.MvcApplicationPartsAssemblyInfo.cs
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
+/home/cesar/Projetos/lxwebapijwt/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
