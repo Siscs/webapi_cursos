@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using lxwebapijwt.Models;
 using lxwebapijwt.Services;
@@ -62,7 +63,11 @@ namespace lxwebapijwt.Controllers
             if(result.Succeeded) 
             {
                 var usuario = await _usermanager.FindByEmailAsync(usuarioLoginVM.Email);
-                return Ok(TokenService.GerarToken(usuario, _tokenConfig));
+                var roles = await _usermanager.GetRolesAsync(usuario);
+                var identityClaims = new ClaimsIdentity();
+                identityClaims.AddClaims(await _usermanager.GetClaimsAsync(usuario));
+
+                return Ok(TokenService.GerarToken(usuario, identityClaims, roles, _tokenConfig));
             }
 
 

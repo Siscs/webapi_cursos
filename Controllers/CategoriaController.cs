@@ -3,10 +3,13 @@ using System.Threading.Tasks;
 using lxwebapijwt.Interfaces;
 using lxwebapijwt.Models;
 using lxwebapijwt.Repositories;
+using lxwebapijwt.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace lxwebapijwt.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("v1/categoria")]
     public class CategoriaController : ControllerBase
@@ -40,6 +43,7 @@ namespace lxwebapijwt.Controllers
         }
 
         [HttpPost]
+        [ClaimsAuthorize("Categoria", "Incluir")]
         public async Task<ActionResult<Categoria>> Post(Categoria categoria)
         {
             if(ModelState.IsValid)
@@ -51,6 +55,7 @@ namespace lxwebapijwt.Controllers
         }
 
         [HttpPut]
+        [ClaimsAuthorize("Categoria", "Alterar")]
         public async Task<ActionResult<Categoria>> Put(Categoria categoria)
         {
             if(ModelState.IsValid)
@@ -62,6 +67,7 @@ namespace lxwebapijwt.Controllers
         }
 
         [HttpDelete]
+        [ClaimsAuthorize("Categoria", "Excluir")]
         public async Task<ActionResult<int>> Delete(Categoria categoria)
         {
             if(categoria.Id > 0)

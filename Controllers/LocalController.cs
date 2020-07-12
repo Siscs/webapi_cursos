@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using lxwebapijwt.Interfaces;
 using lxwebapijwt.Models;
 using lxwebapijwt.Repositories;
+using lxwebapijwt.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,18 +43,21 @@ namespace lxwebapijwt.Controllers
         }
 
         [HttpPost]
+        [ClaimsAuthorize("Local", "Incluir")]
         public async Task<ActionResult<Local>> Post(Local local)
         {
             return await _repository.Adicionar(local);
         }
 
         [HttpPut]
+        [ClaimsAuthorize("Local", "Alterar")]
         public async Task<ActionResult<Local>> Put(Local local)
         {
             return await _repository.Alterar(local);
         }
 
         [HttpDelete]
+        [ClaimsAuthorize("Local", "Excluir")]
         public async Task<ActionResult<int>> Delete(Local local)
         {
             if (local.Id > 0)

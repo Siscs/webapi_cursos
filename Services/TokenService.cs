@@ -4,22 +4,31 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace lxwebapijwt.Services
 {
     public static class TokenService
     {
-        public static string GerarToken(IdentityUser usuarioAuh, TokenConfig tokenConfig)
+        public static string GerarToken(IdentityUser usuarioAuh, ClaimsIdentity identityClaims, IList<string> roles, TokenConfig tokenConfig)
         {
-
-            //usuarioAuh.
-
-
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(tokenConfig.Secret);
 
-            var tokenDescriptor = new SecurityTokenDescriptor
+            if(roles.Any())
             {
+                foreach(string item in roles)
+                {
+                    // identityClaims.AddClaim(new Claim(ClaimTypes.Name, item);
+                    identityClaims.AddClaim(new Claim(ClaimTypes.Role, item));
+                }
+            }
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            { 
+                Subject = identityClaims,
                 Issuer = tokenConfig.Emissor,
                 Audience = tokenConfig.ValidoEm,
                 Expires = DateTime.UtcNow.AddHours(tokenConfig.ExpiracaoHoras),

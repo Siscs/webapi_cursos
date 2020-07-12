@@ -3,10 +3,13 @@ using System.Threading.Tasks;
 using lxwebapijwt.Interfaces;
 using lxwebapijwt.Models;
 using lxwebapijwt.Repositories;
+using lxwebapijwt.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace lxwebapijwt.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("v1/curso")]
     public class CursoController : ControllerBase
@@ -38,6 +41,7 @@ namespace lxwebapijwt.Controllers
         }
 
         [HttpPost]
+        [ClaimsAuthorize("Curso", "Incluir")]
         public async Task<ActionResult<Curso>> Post(Curso curso)
         {
             if(ModelState.IsValid)
@@ -49,6 +53,7 @@ namespace lxwebapijwt.Controllers
         }
 
         [HttpPut]
+        [ClaimsAuthorize("Curso", "Alterar")]
         public async Task<ActionResult<Curso>> Put(Curso curso)
         {
             if(ModelState.IsValid)
@@ -60,6 +65,7 @@ namespace lxwebapijwt.Controllers
         }
 
         [HttpDelete]
+        [ClaimsAuthorize("Curso", "Excluir")]
         public async Task<ActionResult<int>> Delete(Curso curso)
         {
             if(curso.Id > 0)
